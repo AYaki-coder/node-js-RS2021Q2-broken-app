@@ -34,11 +34,11 @@ router.post("/signin", async (req, res) => {
                     sessionToken: token,
                 });
             } else {
-                res.status(502).send({ error: "Passwords do not match." });
+                res.status(403).send({ error: "Wrong combination username/password" });
             }
         });
     } else {
-        res.status(403).send({ error: "User not found." });
+        res.status(403).send({ error: "Wrong combination username/password" });
     }
 });
 

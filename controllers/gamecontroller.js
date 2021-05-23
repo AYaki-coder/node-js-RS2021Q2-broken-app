@@ -9,7 +9,7 @@ router.get("/all", async (req, res) => {
             message: "Data fetched.",
         });
     } catch (err) {
-        res.status(500).json({
+        res.status(404).json({
             message: "Data not found",
         });
     }
@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
             game: game,
         });
     } catch (err) {
-        res.status(500).json({
+        res.status(404).json({
             message: "Data not found.",
         });
     }
@@ -38,7 +38,7 @@ router.post("/create", async (req, res) => {
             userRating: req.body.game.userRating,
             havePlayed: req.body.game.havePlayed,
         });
-        res.status(200).json({
+        res.status(201).json({
             game: game,
             message: "Game created.",
         });
@@ -83,7 +83,7 @@ router.delete("/remove/:id", async (req, res) => {
                 ownerId: req.user.id,
             },
         });
-        res.status(200).json({
+        res.status(204).json({
             game: game,
             message: "Successfully deleted",
         });
